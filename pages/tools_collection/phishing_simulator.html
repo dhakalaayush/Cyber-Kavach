@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Phishing Simulator</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="icon" href="../../pictures/Kavach_logo.png">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="phishing_simulator_container">
+        <div id="simulationArea"></div>
+        <div id="remarkHTML"></div>
+        <button class="next-button" id="nextButton" onclick="nextScenario()" disabled>Next Scenario</button>
+    </div>
+
+    <script>
+        const scenarios = [
+            {
+                type: "email",
+                content: "Your Amazon order has been shipped. Track it <span class='email-link' onclick='trackPackage()'>here</span>.",
+                isPhishing: false,
+                feedback: "📦 This was not a phishing attempt. Always check the sender’s address to be sure."
+            },
+            {
+                type: "email",
+                content: "We have detected unusual activity on your PayPal account. Log in <span class='email-link' onclick='showFakeLogin()'>here</span> to verify your identity.",
+                isPhishing: true,
+                feedback: "⚠️ This is a phishing attempt! Always visit the official website manually instead of clicking links in emails."
+            },
+            {
+                type: "email",
+                content: "You received a refund from your utility company. Click <span class='email-link' onclick='trackRefund()'>here</span> to claim it.",
+                isPhishing: true,
+                feedback: "⚠️ This was a phishing attempt! Always verify refunds through the official company website."
+            },
+            {
+                type: "email",
+                content: "Your social media account was accessed from a new device. If this wasn’t you, secure your account <span class='email-link' onclick='secureAccount()'>here</span>.",
+                isPhishing: false,
+                feedback: "✅ This was a legitimate security alert. However, it's always best to go directly to the website to confirm."
+            },
+            {
+                type: "popup",
+                content: "Your computer is infected! Download this file to fix it. <button class='download-button' onclick='downloadFile()'>Download</button>",
+                isPhishing: true,
+                feedback: "⚠️ This was a phishing attempt! Never download files from untrusted sources."
+            },
+            {
+                type: "login",
+                content: "Your Netflix account has been suspended. Log in to reactivate it.",
+                isPhishing: true,
+                feedback: "⚠️ This was a phishing attempt! Always visit the official website manually."
+            }
+        ];
+
+        let currentScenario = 0;
+        let score = 0;
+
+        function displayScenario() {
+            if (currentScenario < scenarios.length) {
+                const scenario = scenarios[currentScenario];
+                let simulationHTML = "";
+
+                if (scenario.type === "email") {
+                    simulationHTML = `
+                        <div class='email-box'>
+                            ${scenario.content}
+                        </div>
+                        <button class='phishing-button' id="phishingButton" onclick='markAsPhishing()'>Mark as Phishing</button>`;
+                } else if (scenario.type === "popup") {
+                    simulationHTML = `
+                        <div class='popup-box'>
+                            <p>${scenario.content}</p>
+                        </div>
+                        <button class='phishing-button' id="phishingButton" onclick='markAsPhishing()'>Mark as Phishing</button>`;
+                } else if (scenario.type === "login") {
+                    simulationHTML = `
+                        <div class='login-page'>
+                            <p><strong>Netflix Login</strong></p>
+                            <input type='text' class='fake-input' id="loginEmail" placeholder='Email or phone' required><br>
+                            <input type='password' class='fake-input' id="loginPassword" placeholder='Password' required><br>
+                            <button class = "login-button" onclick='submitFakeLogin()'>Log In</button><br>
+                        </div>
+                        <button class='phishing-button' id="phishingButton" onclick='markAsPhishing()'>Mark as Phishing</button>`;
+                }
+
+                document.getElementById('simulationArea').innerHTML = simulationHTML;
+                document.getElementById('remarkHTML').innerHTML = "";
+                document.getElementById('nextButton').disabled = true; // Disable Next Scenario initially
+                document.getElementById('phishingButton').disabled = false; // Enable Mark as Phishing initially
+            } else {
+                showScore();
+            }
+        }
+
+        function trackPackage() {
+            const scenario = scenarios[currentScenario];
+            if (!scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='correct_decision'>${scenario.feedback}</div>`;
+                score += 1; // correct_decisionly identified as not phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>${scenario.feedback}</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function showFakeLogin() {
+            document.getElementById('simulationArea').innerHTML = `
+                <div class='login-page'>
+                    <p><strong>PayPal Login</strong></p>
+                    <input type='text' class='fake-input' id="loginEmail" placeholder='Email or phone' required><br>
+                    <input type='password' class='fake-input' id="loginPassword" placeholder='Password' required><br>
+                    <button class = "login-button" onclick='submitFakeLogin()'>Log In</button><br>
+                </div>
+                <button class='phishing-button' id="phishingButton" onclick='markAsPhishing()'>Mark as Phishing</button>`;
+        }
+
+        function submitFakeLogin() {
+            const scenario = scenarios[currentScenario];
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Validate the login form
+            if (!email || !password) {
+                alert("Both fields are required!");
+                return;
+            }
+
+            if (scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>⚠️ This was a phishing attempt! Never enter your credentials on unverified websites.</div>`;
+                score += 1; // correct_decisionly identified as phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>⚠️ This was not a phishing attempt! Be cautious but verify before taking action.</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function trackRefund() {
+            const scenario = scenarios[currentScenario];
+            if (scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>${scenario.feedback}</div>`;
+                score += 1; // correct_decisionly identified as phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>⚠️ This was not a phishing attempt! Be cautious but verify before taking action.</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function secureAccount() {
+            const scenario = scenarios[currentScenario];
+            if (!scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='correct_decision'>${scenario.feedback}</div>`;
+                score += 1; // correct_decisionly identified as not phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>${scenario.feedback}</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function downloadFile() {
+            const scenario = scenarios[currentScenario];
+            if (scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>${scenario.feedback}</div>`;
+                score += 1; // correct_decisionly identified as phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>⚠️ This was not a phishing attempt! Be cautious but verify before taking action.</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function markAsPhishing() {
+            const scenario = scenarios[currentScenario];
+            if (scenario.isPhishing) {
+                document.getElementById('remarkHTML').innerHTML = `<div class='correct_decision'>✅ correct_decision! ${scenario.feedback}</div>`;
+                score += 1; // correct_decisionly identified as phishing
+            } else {
+                document.getElementById('remarkHTML').innerHTML = `<div class='incorrect_decision'>⚠️ Incorrect_decision! ${scenario.feedback}</div>`;
+                score -= 1; // Incorrect_decisionly marked as phishing
+            }
+            disablePhishingButton();
+            enableNextScenario();
+        }
+
+        function disablePhishingButton() {
+            document.getElementById('phishingButton').disabled = true;
+        }
+
+        function enableNextScenario() {
+            document.getElementById('nextButton').disabled = false;
+        }
+
+        function nextScenario() {
+            if (currentScenario < scenarios.length - 1) {
+                currentScenario++;
+                displayScenario();
+            } else {
+                showScore();
+            }
+        }
+
+        function showScore() {
+            document.getElementById('remarkHTML').innerHTML = "";
+            document.getElementById('simulationArea').innerHTML = `
+                <div class="score-box">
+                    <h3>Your Score: ${scenarios.length - score} / ${scenarios.length}</h3>
+                </div>
+                <button class="primary_button" onclick="window.location.href = '../tools.html';">Go back</button>`;
+            document.getElementById('nextButton').style.display = "none"; // Hide Next Scenario button on last scenario
+        }
+
+        displayScenario();
+    </script>
+</body>
+
+</html>

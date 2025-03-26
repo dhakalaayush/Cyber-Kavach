@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basics of cybersecurity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../pictures/Kavach_logo.png">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="questionHTML">Loading...</div>
+        <div id="optionsHTML"></div>
+        <div id="remarkHTML"></div>
+        <div class="buttons">
+            <button id="prevButton" onclick="prev()">Prev</button>
+            <button id="nextButton" onclick="next()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        //contents to show
+        const contents =
+            [
+                {
+                    question: "Welcome to this interactive learning room of <b> Cybersecurity Basics. </b> <br><br> In this room, you'll learn the fundamental concept of cybersecurity, protecting your data, cybercrime and malwares.",
+                },
+                {
+                    question: "Cybersecurity is the protection of digital devices like your phone and computer from different types of threats.",
+                },
+                {
+                    question: "To protect your social media account from being used by others, what do you do?",
+                    options: ["Set Password", "Hope", "Do nothing"],
+                    correctIndex: 0
+                },
+                {
+                    question: "Exactly, setting passwords is one of the cybersecurity practice you do.",
+                },
+                {
+                    question: "If an unknown person asks for your facebook id and password, should you give them your credentials?",
+                    options: ["Yes", "No"],
+                    correctIndex: 1
+                },
+                {
+                    question: "Cybersecurity covers many areas. We must be careful in each of them."
+                },
+                {
+                    question: "Devices: Phone, computer, tablet, smart gadgets. <br><br> These devices contain data and information, and we must protect them."
+                },
+                {
+                    question: "To prevent anyone from searching important files in your phone, what should you do?",
+                    options: ["Put disgusting phone case", "Set up password or PIN to unlock", "Put your phone in a lock case"],
+                    correctIndex: 1
+                },
+                {
+                    question: "Data: Any information that belongs to you.<br><br> Your data is valuable. You don't want anyone to access it unless you give them permission.",
+                },
+                {
+                    question: "Account: An identification (ID) for any platform, such as instagram, google,etc.<br><br>User: The person s/ule ID is the account based on.<br><br>You are the user of your account. You don't want anyone else to have that privilege for your account.",
+                },
+                {
+                    question: "Connections: WiFi, Bluetooth, Cable connection <br><br> What is a hacker gets connected to your WiFi? He can see your network activities, install viruses and do many more dangerous activities.",
+                },
+                {
+                    question: "Using strong passwords for your WiFi network, accounts and devices is very helpful for cybersecurity.",
+                },
+                {
+                    question: "<b>Creating strong passwords</b> <br><br> Hackers are progressing and they can easily crack (figure out) weak passwords.",
+                },
+                {
+                    question: "Using a mix of numbers, special characters, lowercase letters and uppercase letters is considered a good practice for creating a strong password. <br><br> Example : aAb$@122_cAt",
+                },
+                {
+                    question: "It is not possible to remember complex password. So, you can use password manager. <br><br> A password manager is an application that would store your password for different platforms.",
+                },
+                {
+                    question: "Where should you store your passwords?",
+                    options: ["Notebook", "A text file in your computer", "Password Manager", "Any online note taking site"],
+                    correctIndex: 2
+                },
+                {
+                    question: "<b>Multifactor Authentication</b> <br><br> You can add additional security layers in addition to your password. This can include biometrics, or verification from any specific device. This security feature is called Multifactor Authentication.",
+                },
+                {
+                    question: "You try to log in to your facebook account from your computer by entering your username and password, but it asks to confirm the login using your phone. Why did this happen?",
+                    options: ["Error occured in facebook", "There is virus in your computer", "Multifactor Authentication is enabled"],
+                    correctIndex: 2
+                },
+                {
+                    question: "<b>Cybercrime</b> <br><br> Any illegal activities done with the use of digital devices is cybercrime. It is usually done for financial gain but there may be more purposes.<br>",
+                },
+                {
+                    question: "<b>Cyberattack</b> <br><br> Cyberattack is the action or attempt to damage, disrupt or gain unauthorized access to a system. The person engaged in cyberattack is called hacker, adversary or attacker.",
+                },
+                {
+                    question: "Why do people hack? <br><br> <ul type = 'none'> <li>To steal money.</li> <li>For fun and learning</li> <li>For revenge</li> </ul>",
+                },
+                {
+                    question: "Purpose of hacking: Competitive advantage <br><br> A and B are two competitive companies in a market. <br> A can hack B to make its stock fall down (it will lose money and reputation) and thus A will become superior in the market.",
+                },
+                {
+                    question: "Which of the following isn't a cybercrime?",
+                    options: ["Using fake social media profile to scam others", "Hacking a bank system to steal money", "Hacking a databse to steal information", "Robbing an IT store"],
+                    correctIndex: 3
+                },
+                {
+                    question: "There are so many types of threats in the cybersecurity world. <br> It is important to understand how cyber risk is present in our digital ecosystem.",
+                },
+                {
+                    question: "<b>Malwares</b> <br><br> Malwares are the malicious softwares that can harm your computer in various ways. They can steal information, slow down your computer or use your computer for illegal purposes as well.",
+                },
+                {
+                    question: "Which of the following is the best sign that your computer is infected by malware?",
+                    options: ["Your computer is running slow", "Applications are getting deleted or modified themselves", "The graphics suddenly gets worse in your computer"],
+                    correctIndex: 1
+                },
+                {
+                    question: "While other options may also be the result of malwares, they could also be caused byh hardware issues.",
+                },
+                {
+                    question: "Viruses are the malwares that gets attached to a file and infects the system when the file is executed (opened, run, etc).",
+                },
+                {
+                    question: "Worms are the malwares that can spread through a network into connected devices withoout any user interaction.",
+                },
+                {
+                    question: "What is the key difference between virus and worms?",
+                    options: ["Virusess infect files but do not cause harm", "Viruses need user interaction like file execution but worms don't", "Worms can steal data but viruses cannot"],
+                    correctIndex: 1
+                },
+                {
+                    question: "Sometimes in a malicious application or website, too many ads will popup making user interaction difficult. <br> This is called adware. Adwares overload our computer by showing popup ads, making our computer slow and they may also steal our data.",
+                },
+                {
+                    question: "Trojan horses are the silent malwares that do not show any sign of presence but behind the scnes contiuously cause damage.",
+                },
+                {
+                    question: "Ransomware is the malware where the attacker steals your data, or block some important service in the application you are using, and in return asks for ransom. It is like threating to misuse the s/ulen data if the attacker is not paid the demanded money.",
+                },
+                {
+                    question: "Which of these malwares is less likely to be detected?",
+                    options: ["Virus", "Worms", "Trojans", "Adware"],
+                    correctIndex: 2
+                },
+                {
+                    question: "<b>Purposes of malwares</b> <br><br> <ul type = 'none'> <li>Steal data</li> <li>Slow down the operation of computer</li> <li>Delete data from computer</li> </ul>",
+                },
+                {
+                    question: "<b>Prevent malwares</b> <br><br> <ul type = 'none'> <li>Use authentic anti-malware softwares</li> <li>Do not download pirated files</li> <li>Do not click on links and email attachments without proper inspection</li> </ul>",
+                },
+                {
+                    question: "If you want to download an application from the internet, what should you check?",
+                    options: ["The reviews", "The authenticity of the owner or publisher", "Any warnings that the computer security system may give", "All of above"],
+                    correctIndex: 3
+                },
+            ]
+    </script>
+
+    <script src="../../scripts.js"></script>
+</body>
+
+</html>

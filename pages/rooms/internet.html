@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Internet and Web Security</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../pictures/Kavach_logo.png">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="questionHTML">Loading...</div>
+        <div id="optionsHTML"></div>
+        <div id="remarkHTML"></div>
+        <div class="buttons">
+            <button id="prevButton" onclick="prev()">Prev</button>
+            <button id="nextButton" onclick="next()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        //contents to show
+        const contents =
+            [
+                {
+                    question: "Welcome to this interactive learning room of <b>Internet and Web Security. </b> <br><br> In this room, you'll learn safe browsing, safe internet activities, conecpt of cookies and VPN.",
+                },
+                {
+                    question: "We are blessed by the things we can do on the internet. But, it is not a safe and free heaven. We must be careful about our presence on the internet.",
+                },
+                {
+                    question: "<b>Safe Browsing</b>: It is important to verify the site you are visiting and the contents you are downloading from the internet. You should only download files from authorized sites.",
+                },
+                {
+                    question: "<img src = '../../pictures/http_https.png'>",
+                },
+                {
+                    question: "The https protocol (indicated by the padlock icon in the url bar) is safe while the site with http is insecure."
+                },
+                {
+                    question: "You visit a new website and you see a strange link. What do you do?",
+                    options: ["Click and see what the link does", "Exit the site", "Send the link to others"],
+                    correctIndex: 1
+                },
+                {
+                    question: "<img src = '../../pictures/cookies.png'>"
+                },
+                {
+                    question: "You may have seen websites asking you to accept cookies like in the previous slide.<br> <b>Cookies</b>: Cookies are what stores your information to remember you when you visit the site next time.",
+                },
+                {
+                    question: "Cookies can track your activity and the information they get can help them show personalised ads. They are meant to improve user experience.",
+                },
+                {
+                    question: "Cookies have security concerns as well. It collects personal information and disrupts provacy. You can block cookies in browser settings."
+                },
+                {
+                    question: "Which of these is a good online shopping habit?",
+                    options: ["Shopping from authentic reputable websites", "Go through payment process in public WiFi", "Neglect site and product neviews", "None of above"],
+                    correctIndex: 0
+                },
+                {
+                    question: "Internet is filled with numerous information. Not all of those is true.",
+                },
+                {
+                    question: "How can you verify the truthfulness of a news?",
+                    options: ["By verifying it from multiple sources", "By inspecting the context", "Both", "None"],
+                    correctIndex: 2
+                },
+                {
+                    question: "You may have used or seen other use <b>VPN</b> to access blocked application or sites. What does VPN do actually to make this happen?",
+                },
+                {
+                    question: "VPN (Virtual Private Network) is a secure connection that protects your internet traffic and also hides you IP address, which is your location on the network."
+                },
+                {
+                    question: "Basically, VPN creates a secure tunnel between you and the internet. The tunnel passes through a remote server on any location. So, if you are in USA using VPN with server on UK, then you appear to be from the UK on the internet."
+                },
+            ]
+    </script>
+
+    <script src="../../scripts.js"></script>
+</body>
+
+</html>

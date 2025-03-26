@@ -1,0 +1,781 @@
+body{
+    background: #191918;
+    margin: 0;
+}
+
+/*scrollbar*/
+/* Width and height of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: none;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #60437f;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #76529c;
+}
+
+/*buttons*/
+#prevButton,#nextButton,.primary_button{
+    background: #7f37da;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius:10px;
+    transition: all 0.3s ease;
+}
+#prevButton:hover, #nextButton:hover,.primary_button:hover:hover{
+    background:#9742ff;
+    cursor: pointer;
+}
+
+.secondary_button{
+    background: #382a47;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
+    padding: 12px 20px;
+    border: solid 1px black;
+    border-radius:10px;
+    transition: all 0.3s ease;
+}
+.secondary_button:hover{
+    background:#503b67;
+    cursor: pointer;
+}
+
+/*the header section*/
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 2%;
+}
+header a{
+    text-decoration: inherit;
+    color:white;
+    transition:all 0.3s ease;
+}
+header a:hover{
+    color:rgb(184, 184, 184);
+}
+
+.logo{
+    height: 10vh;
+}
+header ul{
+    color: white;
+    list-style: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    align-items: center;
+}
+
+/* General section styling */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.section_text{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.section_header {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/*the footer section*/
+footer {
+    background: #232323;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+  }
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+  }
+  .footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 5px;
+  }
+  .footer-column h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size:1.6rem;
+  }
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer-column ul li {
+    margin: 6px 0;
+  }
+  .footer-column ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-column ul li a:hover {
+    color: #b378ff;
+  }
+  
+  .footer-bottom {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+/*Homepage*/
+
+/*hero section*/
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4%;
+    color: white;
+    height: 60vh;
+    gap: 2rem; /* Adds spacing between text and image */
+}
+
+.hero_text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem;
+    flex: 1; /* Allows text section to expand */
+}
+
+.hero_text h1 {
+    line-height: 1.4;
+}
+
+.hero_buttons {
+    display: flex;
+    gap: 1rem; /* Space between buttons */
+    margin-top: 1rem;
+    justify-content: space-evenly;
+}
+
+.hero_img {
+    flex: 1; /* Allows image section to expand */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero_img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/*have you section*/
+.have_you {
+    background: #232323; 
+    text-align: center;
+}
+
+/* Header Styling */
+.have_you h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* List Styling */
+.have_you ul {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    list-style: none;
+    padding: 0;
+    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* List Item Styling */
+.have_you ul li {
+    padding: 0.8rem 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Adding Check Icon */
+.have_you ul li::before {
+    content: "✔";
+    color: #9742ff;
+    font-weight: bold;
+}
+
+
+
+/*quiz*/
+.quiz{
+    background:#281e33;
+    margin: 5% auto;
+    height: 60vh;
+    width: 40%;
+    padding: 3%;
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#QUIZquestion{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 200%;
+    color: white;
+    text-align: center;
+}
+
+.QUIZbuttons{
+    display:flex;
+    justify-content: space-between;
+}
+#nextButtonQUIZ{
+    background: #7f37da;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius:10px;
+    margin:auto;
+    transition: all 0.3s ease;
+}
+#nextButtonQUIZ:hover{
+    background:#9742ff;
+    cursor: pointer;
+}
+
+#QUIZoptions{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.option_in_quiz{
+    background: none;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding:10px;
+    border: solid 2px #b378ff;
+    border-radius: 10px;
+    display:flex;
+    margin-bottom:4%;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.option_in_quiz:hover{
+    cursor: pointer;
+    background:#382a47;
+}
+
+#QUIZremark{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+/*email section*/
+.email_container{
+    padding:0;
+}
+.email_image{
+    background:#261c31;
+    width: 100%;
+    position:absolute;
+    height:55vh;
+    z-index: -1;
+}
+.email_image img{
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    opacity: 30%;
+}
+.email_text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email_text h1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 5rem;
+    color:white;
+}
+.email_text p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3rem;
+    color: white;
+}
+
+/*quiz section*/
+.quiz_section{
+    display:flex;
+    justify-content:space-evenly;
+    width:100%;
+}
+
+.quiz_image img{
+    width:20rem;;
+}
+
+/*blog section*/
+.learn_section{
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+}
+.learn_section_container{
+    background: #281e33;
+    text-align: center;
+    padding: 2rem;
+    width:25rem;
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.learn_section_container img{
+    height:20rem;
+    width:25rem;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.learn_section_container button{
+    margin-top: auto;
+    align-self: center;
+    width:30%;
+}
+
+/*learn page*/
+
+/* Learning Hub Container */
+.learning_hub {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    width: 100%;
+}
+
+/* Room Card Styling */
+.rooms {
+    background: #2b2435;
+    padding: 2rem;
+    color: white;
+    border-radius: 10px;
+    width: 27rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.rooms button{
+    margin-top: auto;
+}
+.text_message{
+    background: rgb(70, 70, 70);
+    border-radius: 5px;
+    padding: 2.5rem 5rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+.room_image{
+    height: 70%;
+}
+
+
+/* Room Titles */
+.rooms h1, .blogs h1, .learn_section_container h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+/* List Styling */
+.rooms ul, .learn_section_container p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.4rem;
+    text-align: left;
+    padding-left: 1.5rem;
+    color: white;
+}
+
+.rooms ul li {
+    margin-bottom: 0.5rem;
+}
+
+/*blog*/
+.blogs{
+    background: #382a47;
+    padding: 1rem 1rem;
+    color: white;
+    border-radius: 10px;
+    height: 30rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.blog_image{
+    height:30vh;
+    width: 40vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/*The learning rooms*/
+.container{
+    background:#281e33;
+    margin: 5% auto;
+    height: 60vh;
+    width: 40%;
+    padding: 3%;
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#questionHTML{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 200%;
+    color: white;
+    text-align: center;
+}
+
+.buttons{
+    display:flex;
+    justify-content: space-between;
+}
+
+#optionsHTML{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.option{
+    background: none;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding:10px;
+    border: solid 2px #b378ff;
+    display:flex;
+    width: 100%;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+.option:hover{
+    cursor: pointer;
+    background:#382a47;
+}
+
+#remarkHTML{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+/*Blogs pages style*/
+.blogs_content{
+    width:80%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+.blogs_content img{
+    height:25rem;
+    border-radius: 10px;
+}
+
+.blogs_content h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: xx-large;
+}
+.blogs_content h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: x-large;
+    margin-right: auto;
+}
+.blogs_content h3{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+    margin-right: auto;
+}
+
+.blogs_content p, .blogs_content ul, .blogs_content ol, .blogs_content table{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+    margin-right: auto;
+}
+
+.blogs_content table, .blogs_content table td, .blogs_content table th
+{
+    border : 2px solid white;
+    padding: 5px;
+}
+
+/*tools page*/
+
+/*passwords*/
+.password_strength_checker{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+.password_strength_checker h1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+#password{
+    width: 60%;
+    height: 3rem;
+    border: solid 2px #7f37da; 
+    border-radius: 25px;
+}
+#password::placeholder{
+    padding-left: 1rem;
+    font-size: medium;
+}
+
+#response{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+}
+
+#remark{
+    font-size: large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:white;
+}
+
+/*phishing simulator*/
+
+.phishing_simulator_container {
+    max-width: 600px;
+    height: 30rem;
+    margin: auto auto;
+    padding: 20px;
+    background-color: #382a47;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.email-box,
+.login-page,
+.popup-box {
+    background-color: #c8c5c5;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.email-link,
+.fake-input,
+.download-button {
+    color: #003e7b;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.fake-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #333;
+    color: white;
+    cursor:text;
+}
+
+.fake-input:focus {
+    border-color: #6a0dad;
+    outline: none;
+}
+
+.correct_decision {
+    color: #4caf50;
+}
+
+.incorrect_decision {
+    color: #ff4c4c;
+}
+
+.phishing_simulator_hidden {
+    display: none;
+}
+
+.next-button,
+.phishing-button {
+    padding: 10px 20px;
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.login-button{
+    background: #545454;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 7px;
+    border: solid 1px black;
+    border-radius:10px;
+    cursor: pointer;
+}
+
+.phishing-button {
+    background: #b61515;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius:10px;
+    transition: all 0.3s ease;
+}
+
+.phishing-button:hover{
+    background:#e53c3c;
+    cursor: pointer;
+}
+
+.next-button:disabled,
+.phishing-button:disabled,
+.download-button:disabled {
+    cursor: not-allowed;
+    opacity:20%;
+}
+
+.score-box {
+    background-color: #9b9b9b;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/*Privacy Policy*/
+.privacy_policy{
+    color:white;
+    width:75%;
+    margin: auto auto;
+    text-align: center;
+}
+
+.privacy_policy h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.privacy_policy p, .privacy_policy ul{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.privacy_policy ul{
+    list-style: none;
+}
+
+
+/*Connect with us page*/
+.connect_with_us
+{
+    display:flex;
+}
+.about
+{
+    display:flex;
+    width: 40%;
+    padding: 3%;
+    line-height: 150%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+}
+
+.contact
+{
+    width: 50%;
+    padding: 3%;
+    display:flex;
+    flex-direction: column;
+}
+.contact h1
+{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+.contact table
+{
+    width: 100%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: x-large;
+}
+.contact table td
+{
+    padding: 2%;
+}
+.contact table input
+{
+    width: 60%;
+    height: 2rem; 
+    border-radius: 5px;
+}

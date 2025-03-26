@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Basics of cybersecurity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../pictures/Kavach_logo.png">
+    <link rel="stylesheet" href="../../styles.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="quiz">
+        <div id="QUIZquestion">Loading...</div>
+        <div id="QUIZoption"></div>
+        <div id="QUIZremark"></div>
+        <div class="QUIZbuttons">
+            <button id="nextButtonQUIZ" onclick="next()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        //contents to show
+        const contents = [
+            {
+                question: "Do you use same password across multiple accounts/platforms?",
+                options: ["Yes, I use same password", "No, I use differentpasswords"],
+                correctIndex: 1
+            },
+            {
+                question: "How often do you change your passwords?",
+                options: ["Once every three-six months", "Once every year", "Once every two-three years", "Never"],
+                correctIndex: 0
+            },
+            {
+                question: "How do you set your password?",
+                options: ["Easy to remember", "A mix of letters, numbers and special symbols", "Name of my pet"],
+                correctIndex: 1
+            },
+            {
+                question: "Do you enable Multifactor Authentication across your social accounts?",
+                options: ["Yes, I have Multifactor Authentication in my accounts", "I dont know what Multifactor Authentication is"],
+                correctIndex: 0
+            },
+            {
+                question: "How often do you update your software and applications?",
+                options: ["Never", "On yearly basis", "As soon as the update gets released"],
+                correctIndex: 2
+            },
+            {
+                question: "Do you use anti-malwares or antivirus software in your computer?",
+                options: ["No I don't", "I use the free version that I installed from a website", "I use the one that I purchased from the legitimate site"],
+                correctIndex: 2
+            },
+            {
+                question: "What do you do when you receive a link?",
+                options: ["I click on it", "I verify it and then click on it if it is safe and legitimate", "I just ignore it"],
+                correctIndex: 1
+            },
+            {
+                question: "Are you careful about what you post on your social media account?",
+                options: ["Yes I try to not limit my personal information to share", "I share my information without any care"],
+                correctIndex: 0
+            },
+            {
+                question: "Do you have a habit of backing up your important files?",
+                options: ["No", "Yes", "What is backup?"],
+                correctIndex: 1
+            },
+            {
+                question: "Do you use default password of your WiFi?",
+                options: ["Yes, I haven't changed my WiFi password", "I often change my WiFi password", "I haven't enabled password on my WiFi"],
+                correctIndex: 1
+            },
+        ]
+
+
+
+        let currentIndex = 0; //This is the index of contents array
+        let score = 0; //score for correct answer
+
+
+        //loading contents function
+        function displayContent() {
+            //clearing previous contents
+            document.getElementById('QUIZquestion').innerHTML = "";
+            document.getElementById('QUIZoption').innerHTML = "";
+            document.getElementById('QUIZremark').innerHTML = "";
+
+            //loading questions
+            let currentQuestion = contents[currentIndex].question;
+            document.getElementById('QUIZquestion').innerHTML = currentQuestion;
+
+            //loading options, the elements in array should display in the form of buttons
+            let currentOptions = contents[currentIndex].options;
+            //looping through the elements of array creating buttons for each
+            for (items of currentOptions) {
+                let btn = document.createElement("button");
+
+                btn.innerHTML = items;
+                btn.classList.add("option_in_quiz"); // Adds the CSS class option_in_quiz to the buttons
+                QUIZoption.appendChild(btn);  // Add button to the div QUIZoption
+                //adding onclick event
+                btn.onclick = function () {
+                    if (btn.innerHTML == contents[currentIndex].options[contents[currentIndex].correctIndex]) {
+                        //this is when the user clicks the correct option
+                        document.getElementById('QUIZremark').innerHTML = "Great practice!";
+                        score++;
+                    }
+                    else {
+                        //this is when the user clicks the wrong option
+                        btn.style.background = "rgb(132, 2, 2)"; //show the clicked option as red
+                        document.getElementById('QUIZremark').innerHTML = "Not a great practice!";
+                    }
+                    button_array = document.getElementById("QUIZoption").getElementsByTagName("button"); //this returns array of the buttons
+                    for (buttons of button_array) {
+                        buttons.disabled = true; //disable the buttons
+                        //show the correct option as green
+                        if (buttons.innerHTML == contents[currentIndex].options[contents[currentIndex].correctIndex]) {
+                            buttons.style.background = "rgb(7, 98, 0)";
+                        }
+                    }
+                };
+            }
+        }
+
+        // Function to show the final score at the end
+        function showFinalScore() {
+            document.getElementById('QUIZquestion').innerHTML = "Quiz Completed!";
+            document.getElementById('QUIZoption').innerHTML = "";
+            document.getElementById('QUIZremark').innerHTML = "Your scored " + score + " out of " + contents.length;
+
+            // Hide the Next button after the last question
+            document.getElementById('nextButtonQUIZ').style.display = "none";
+
+            //show home page redirection buttion
+            let homeButton = document.createElement("button");
+            homeButton.classList.add("primary_button");
+            homeButton.innerHTML = "Return Home";
+            homeButton.onclick = function () {
+                window.location.href = "../index.html"; // Change to your actual homepage URL
+            }
+            document.querySelector(".quiz").appendChild(homeButton);
+        }
+
+        //calling displayContent function to display the contents (questions and options)
+        displayContent();
+
+        function next() {
+            if (currentIndex < contents.length - 1) {
+                currentIndex++;
+                displayContent();
+            }
+            else {
+                showFinalScore();
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

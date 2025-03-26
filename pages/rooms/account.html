@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Protecting Your Account and Personal Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../pictures/Kavach_logo.png">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="questionHTML">Loading...</div>
+        <div id="optionsHTML"></div>
+        <div id="remarkHTML"></div>
+        <div class="buttons">
+            <button id="prevButton" onclick="prev()">Prev</button>
+            <button id="nextButton" onclick="next()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        //contents to show
+        const contents =
+            [
+                {
+                    question: "Welcome to this interactive learning room of <b> Securing Your Account and Personal Information. </b> <br><br> In this room, you'll learn the importance of personal information, threats to it and how social media plays a role in this subject.",
+                },
+                {
+                    question: "Personal Information is any piece of information that identifies a person.",
+                },
+                {
+                    question: "Personal Information can include: <br><br><br>Personally Identifiable Informations(PII): Name, Address, Email, Phone Number <br><br>Sensitive Personal Information (SPI): Banking credentials, Medical Records <br><br>Contextual Information: IP address, Browsing history",
+                },
+                {
+                    question: "Which of these is not your personal information?",
+                    options: ["Full Name", "Geological Location", "Your interests", "None of above"],
+                    correctIndex: 3
+                },
+                {
+                    question: "Some of your personal information is valuable and you do not want it to be shared with anyone.",
+                },
+
+                {
+                    question: "<b>Identity Theft</b>: Stealing personal information is called Identity Theft. If cybercriminals get your information, they can use it for scamming others by pretending to be you.",
+                },
+                {
+                    question: "<img src = '../../pictures/telling_password.png' class = 'room_image'>",
+                },
+                {
+                    question: "<b>Social Engineering</b>: Social Engineering is a technique of manipulating or tricking people to get personal information. This includes sending fake emails or text, creating fake scenarios or simple convincing like in the previous slide.",
+                },
+                {
+                    question: "We should not overshare personal information to anyone, not even with our trusted ones because they may become a victim of social engineering too.",
+                },
+                {
+                    question: "<div class = 'text_message'>Share your bank credentials so that we can send you money.</div><br> You get this text. What do you do?",
+                    options: ["Text them your bank details", "Ignore", "Report the text sender", "Introduce yourself to them"],
+                    correctIndex: 2
+                },
+                {
+                    question: "You probably use social media. It is important to protect your personal information on them.",
+                },
+                {
+                    question: "Social Media is a platform to share many different things, including personal information. Oversharing can lead to identity theft, phishing, stalking, and social engineering attacks.",
+                },
+                {
+                    question: "You must be careful about what you share on social media. You shouldn't post sensitive information like your phone number, home address or any other financial information.",
+                },
+                {
+                    question: "You shouldn't login to your account from a lot of devices. You should log out from any other devices if logged in at any point.",
+                },
+                {
+                    question: "You should protect your accounts by using strong password and enabling multifactor authentication.",
+                },
+                {
+                    question: "Which of these is a good practice?",
+                    options: ["Setting multifactor authentication for your google account", "Clicking any links you receive to see what happens", "Logging in to your facebook account from many devices"],
+                    correctIndex: 0
+                },
+            ]
+    </script>
+
+    <script src="../../scripts.js"></script>
+</body>
+
+</html>

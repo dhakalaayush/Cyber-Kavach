@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cyber Kavach</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../pictures/Kavach_logo.png">
+</head>
+
+<body>
+    <header>
+        <img src="../pictures/Kavach_logo.png" alt="logo of cyber kavach" class="logo">
+        <ul class="header_list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="#" style="color:#b378ff;">Tools</a></li>
+            <li><button class="primary_button" onclick="window.location.href = '../pages/contact.html'">Get in
+                    touch</button></li>
+        </ul>
+    </header>
+
+    <section>
+        <h1 class="section_header">Password Strength Checker</h1>
+        <div class="password_strength_checker">
+            <input type="text" id="password" placeholder="Enter password">
+            <p id="response"></p>
+            <p id="remark"></p>
+        </div>
+    </section>
+
+    <section>
+        <h1 class="section_header">Phishing Simulator</h1>
+        <p class="section_text">Test how aware you are about phishing.</p>
+        <button class="secondary_button"
+            onclick="window.location.href='../pages/tools_collection/phishing_simulator.html'">Simulate</button>
+    </section>
+
+
+
+    <!--javascript-->
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById("password").addEventListener("input", passwordChecker); //passwordChecker is passed as a reference so no paranthesis
+
+        function passwordChecker() {
+            //clear the innerHTML text of id "remark"
+            document.getElementById("remark").innerHTML = "";
+
+            let password = document.getElementById("password").value;
+
+            if (password == "") {
+                document.getElementById("response").innerHTML = "Blank input";
+            }
+            else {
+
+                /*bases for strength checking:
+                1 point - minimum length of 8
+                1 point - using mix of capital and small letters
+                1 point - use of numbers
+                1 point - numbers are not sequencial
+                1 point - use of special characters
+                
+                total - 5 points
+                weak password - 1 or 2 or 0 points
+                medium password - 3 or 4 points
+                strong password - 5 point*/
+
+                let point = 0;
+
+                //minimum length of 8
+                if (password.length >= 8) {
+                    point++;
+                }
+                else {
+                    document.getElementById('remark').innerHTML = "Minimum length of password should be 8";
+                }
+
+                //using mix of capital and small letters
+                let regex1 = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
+                if (regex1.test(password) == true) {
+                    point++;
+                }
+                else {
+                    if (document.getElementById('remark').innerHTML == "") {
+                        document.getElementById('remark').innerHTML = "Use mix of capital and small letters";
+                    }
+                }
+
+                //using numbers
+                let regex2 = /[1-9]/
+                if (regex2.test(password) == true) {
+                    point++;
+
+                    //numbers are not sequencial
+                    let regex3 = /\D*/;
+                    let password1 = password;
+                    //remove non-digits
+                    while (isNaN(parseInt(password1))) {
+                        password1 = password1.replace(regex3, "");
+                        console.log(password1);
+                    }
+                    if (password1.toString().length >= 3) {
+                        if (isSequencial(password1) == false) {
+                            point++;
+                        }
+                        else {
+                            document.getElementById('remark').innerHTML = "Use non-sequencial numbers";
+                        }
+                    }
+                    else {
+                        if (document.getElementById('remark').innerHTML == "") {
+                            document.getElementById('remark').innerHTML = "Use at least 3 numbers";
+                        }
+                    }
+                }
+                else {
+                    if (document.getElementById('remark').innerHTML == "") {
+                        document.getElementById('remark').innerHTML = "Use numbers";
+                    }
+                }
+
+                //use of special characters
+                let regex4 = /[!@#$%^&*._:'",|\\+\- ]/;
+                if (regex4.test(password) == true) {
+                    point++;
+                }
+                else {
+                    if (document.getElementById('remark').innerHTML == "") {
+                        document.getElementById('remark').innerHTML = "Use special characters";
+                    }
+                }
+
+                //resulting
+                let result = "";
+                if (point <= 2) {
+                    result = "Weak";
+                    document.getElementById("response").style.color = "rgb(252, 93, 93)";
+                }
+                else if (point == 3 || point == 4) {
+                    result = "Medium";
+                    document.getElementById("response").style.color = "rgb(244, 244, 102)";
+                }
+                else if (point == 5) {
+                    result = "Strong"
+                    document.getElementById("response").style.color = "rgb(98, 255, 98)";
+                }
+                else {
+                    result = "error"
+                }
+
+                //displaying result
+                document.getElementById("response").innerHTML = result;
+            }
+        }
+
+
+        //function to check if the numbers are sequencial
+        function isSequencial(str) {
+            let increasing = true;
+
+            for (let i = 0; i < str.length - 1; i++) {
+                if (parseInt(str[i]) + 1 != parseInt(str[i + 1])) {
+                    increasing = false;
+                }
+            }
+
+            return increasing;
+        }
+
+    </script>
+</body>
+
+</html>
