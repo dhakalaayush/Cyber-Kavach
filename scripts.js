@@ -58,7 +58,7 @@ function finalPage() {
     homeButton.classList.add("primary_button");
     homeButton.innerHTML = "Return Home";
     homeButton.onclick = function () {
-        window.location.href = "index.html"; // Change to your actual homepage URL
+        window.location.href = "pages/tools.html"; // Change to your actual homepage URL
     }
     document.querySelector(".container").appendChild(homeButton);
 }
